@@ -1,2 +1,2 @@
 # STM_waterleveling
-Implementation of water leveling sensor using NUCLEO-STMf746zgt
+Implementation of water level sensor(grove) using NUCLEO-STMf746zgt
