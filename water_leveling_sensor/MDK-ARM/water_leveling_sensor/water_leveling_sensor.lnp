@@ -1,0 +1,26 @@
+--cpu Cortex-M7.fp.sp
+"water_leveling_sensor\startup_stm32f746xx.o"
+"water_leveling_sensor\main.o"
+"water_leveling_sensor\stm32f7xx_it.o"
+"water_leveling_sensor\stm32f7xx_hal_msp.o"
+"water_leveling_sensor\stm32f7xx_hal_cortex.o"
+"water_leveling_sensor\stm32f7xx_hal_i2c.o"
+"water_leveling_sensor\stm32f7xx_hal_i2c_ex.o"
+"water_leveling_sensor\stm32f7xx_hal_rcc.o"
+"water_leveling_sensor\stm32f7xx_hal_rcc_ex.o"
+"water_leveling_sensor\stm32f7xx_hal_flash.o"
+"water_leveling_sensor\stm32f7xx_hal_flash_ex.o"
+"water_leveling_sensor\stm32f7xx_hal_gpio.o"
+"water_leveling_sensor\stm32f7xx_hal_dma.o"
+"water_leveling_sensor\stm32f7xx_hal_dma_ex.o"
+"water_leveling_sensor\stm32f7xx_hal_pwr.o"
+"water_leveling_sensor\stm32f7xx_hal_pwr_ex.o"
+"water_leveling_sensor\stm32f7xx_hal.o"
+"water_leveling_sensor\stm32f7xx_hal_exti.o"
+"water_leveling_sensor\stm32f7xx_hal_tim.o"
+"water_leveling_sensor\stm32f7xx_hal_tim_ex.o"
+"water_leveling_sensor\system_stm32f7xx.o"
+--library_type=microlib --strict --scatter "water_leveling_sensor\water_leveling_sensor.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "water_leveling_sensor.map" -o water_leveling_sensor\water_leveling_sensor.axf
