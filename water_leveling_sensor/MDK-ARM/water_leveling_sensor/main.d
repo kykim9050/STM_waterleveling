@@ -29,3 +29,4 @@ water_leveling_sensor\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_
 water_leveling_sensor\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_i2c_ex.h
 water_leveling_sensor\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h
 water_leveling_sensor\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h
+water_leveling_sensor\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h

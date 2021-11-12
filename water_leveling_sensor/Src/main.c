@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +45,11 @@
 I2C_HandleTypeDef hi2c2;
 
 /* USER CODE BEGIN PV */
-uint8_t a = 0;
+uint8_t buf_l[8]={0};
+uint8_t buf_h[12]={0};
+uint8_t low_data[8]={0};
+uint8_t high_data[12]={0};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,7 +74,7 @@ static void MX_I2C2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	
+	volatile HAL_StatusTypeDef error;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -94,18 +98,35 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
-	//HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress,uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		if(HAL_I2C_IsDeviceReady(&hi2c2, 0x78 << 1, 2, 10) == HAL_OK){	//or use '0x77 << 1'
-			a=1;
+		memset(buf_h,0,sizeof(buf_h));
+		memset(buf_l,0,sizeof(buf_l));
+		
+		//high raw data
+		error = HAL_I2C_Master_Transmit(&hi2c2, 0x78 << 1, buf_h, sizeof(buf_h), 100);
+		if(error==HAL_OK)
+		{
+			error = HAL_I2C_Master_Receive(&hi2c2, 0x78 << 1, high_data, 12, 500);
+			if(error!=HAL_OK){} //TODO Error Handling
+		} 
+		
+		//low raw data
+		error = HAL_I2C_Master_Transmit(&hi2c2, 0x77 << 1, buf_l, sizeof(buf_l), 100);
+		if(error==HAL_OK)
+		{
+			error = HAL_I2C_Master_Receive(&hi2c2, 0x77 << 1, low_data, 8, 500);
+			if(error!=HAL_OK){} //TODO Error Handling
 		}
-    /* USER CODE END WHILE */
+		
+		
+
+                                        
+		/* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
